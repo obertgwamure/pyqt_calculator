@@ -15,7 +15,6 @@ class Calculator(QWidget):
 	def __init__(self):
 		'''
 		The constructor will load the ui form for use by the app as the GUI.
-		The constructor will also call the event triggers method.
 		'''
 		super(Calculator, self).__init__()
 		loadUi('Calculator.ui', self)
@@ -28,7 +27,7 @@ class Calculator(QWidget):
 
 	def event_triggers(self):
 		'''
-		Function will used to listen for button clicks and trigger events
+		Function will used to trigger events
 		'''
 		#-------------numbers------------------------
 		self.btn_0.clicked.connect(self.btn_0_clicked)
@@ -54,11 +53,6 @@ class Calculator(QWidget):
 		self.clear_btn.clicked.connect(self.clear_screen)
 	
 	#----------events---------------
-	'''
-	When the numbers or the point are clicked, they will trigger the events
-	below. Each function will call the update display function and pass a specify value
-	as argument to the update display function.
-	'''
 	def btn_0_clicked(self):
 		self.update_display(0)
 	def btn_1_clicked(self):
@@ -85,9 +79,8 @@ class Calculator(QWidget):
 
 	def update_display(self,value):
 		'''
-		Function will only continue to update display if the display 
+		Function will only continue to update display with number clicked if the display 
 		has not reached limit.
-		Function will update display with value of button clicked.
 		the current display string is used to store what the user has 
 		entered before and update accordingly.
 		'''
@@ -98,7 +91,6 @@ class Calculator(QWidget):
 
 	# Calculations---------------------------
 	# Each operation is triggered by the operation buttons on the ui
-	# The functions will call get num function to initiate operation 
 	and pass the operation character (= - x /)
 	def add(self):
 		self.get_num1('+')
@@ -114,8 +106,8 @@ class Calculator(QWidget):
 
 	def get_num1(self, operation):
 		'''
-		Function will take a char that represents the user's c
-		hoice of operation and store it in current operation attribute.
+		Function will take a char that represents the user's 
+		choice of operation and store it in current operation attribute.
 		It takes the value on screen entered by user and gives that 
 		value to num1. The screen is the clear for user to enter num2.
 		'''
@@ -126,12 +118,9 @@ class Calculator(QWidget):
 
 	def get_answer(self):
 		'''
-		The get answer function is triggered by the user 
-		clicking on the equal sign.
-		It takes the value on screen and store it in num2.
+		Function takes the value on screen and store it in num2.
 		An appropriate calculation is then done after 
 		checking what the char in current operation is. 
-		Operation is then logged on to a file.
 		'''
 		self.current_display = ''
 		self.num2 = float(self.display_lbl.value())
@@ -154,10 +143,7 @@ class Calculator(QWidget):
 
 	def log_to_file(self,result):
 		'''
-		Function will use exception handling to handle errors when logging
-		 calculation to file.
-		Function will show a message box with an error if operation is not 
-		successful.
+		Function will use exception handling related to logging to file
 		'''
 		try:
 			f = open('math_log.txt', 'a')
