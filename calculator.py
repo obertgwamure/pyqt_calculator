@@ -85,9 +85,11 @@ class Calculator(QWidget):
 
 	def update_display(self,value):
 		'''
-		Function will only continue to update display if the display has not reached limit.
+		Function will only continue to update display if the display 
+		has not reached limit.
 		Function will update display with value of button clicked.
-		the current display string is used to store what the user has entered before and update accordingly.
+		the current display string is used to store what the user has 
+		entered before and update accordingly.
 		'''
 		if len(self.current_display) == 5:
 			return
@@ -96,7 +98,8 @@ class Calculator(QWidget):
 
 	# Calculations---------------------------
 	# Each operation is triggered by the operation buttons on the ui
-	# The functions will call get num function to initiate operation and pass the operation character (= - x /)
+	# The functions will call get num function to initiate operation 
+	and pass the operation character (= - x /)
 	def add(self):
 		self.get_num1('+')
 	def subtract(self):
@@ -111,8 +114,10 @@ class Calculator(QWidget):
 
 	def get_num1(self, operation):
 		'''
-		Function will take a char that represents the user's choice of operation and store it in current operation attribute.
-		It takes the value on screen entered by user and gives that value to num1. The screen is the clear for user to enter num2.
+		Function will take a char that represents the user's c
+		hoice of operation and store it in current operation attribute.
+		It takes the value on screen entered by user and gives that 
+		value to num1. The screen is the clear for user to enter num2.
 		'''
 		self.current_display = ''
 		self.current_operation = operation
@@ -121,9 +126,11 @@ class Calculator(QWidget):
 
 	def get_answer(self):
 		'''
-		The get answer function is triggered by the user clicking on the equal sign.
+		The get answer function is triggered by the user 
+		clicking on the equal sign.
 		It takes the value on screen and store it in num2.
-		An appropriate calculation is then done after checking what the char in current operation is. 
+		An appropriate calculation is then done after 
+		checking what the char in current operation is. 
 		Operation is then logged on to a file.
 		'''
 		self.current_display = ''
@@ -136,7 +143,8 @@ class Calculator(QWidget):
 			result = self.num1 * self.num2
 		else:
 			result = self.num1 / self.num2
-		# If result's length does not fit on screen, zeros are displayed to use as error reporting.
+		# If result's length does not fit on screen, zeros 
+		# are displayed to use as error reporting.
 		if result > 99999:
 			self.display_lbl.display('000000')
 			return
@@ -146,8 +154,10 @@ class Calculator(QWidget):
 
 	def log_to_file(self,result):
 		'''
-		Function will use exception handling to handle errors when logging calculation to file.
-		Function will show a message box with an error if operation is not successful.
+		Function will use exception handling to handle errors when logging
+		 calculation to file.
+		Function will show a message box with an error if operation is not 
+		successful.
 		'''
 		try:
 			f = open('math_log.txt', 'a')
@@ -164,8 +174,10 @@ class Calculator(QWidget):
 
 	def open_log(self):
 		'''
-		Function will use exception handling to handle errors when opening log file.
-		Function will show a message box with an error if operation is not successful.
+		Function will use exception handling to handle errors when 
+		opening log file.
+		Function will show a message box with an error if operation 
+		is not successful.
 		'''
 		try:
 			# Displaying log to user.
